@@ -29,12 +29,24 @@ func RandomizeWord(word string) string {
 	var new_word string
 	runes := []rune(word)
 	length := len(runes)
-	new_runes := make([]rune, length)
-	rand_idx := rand.Perm(length) //文字列のインデックスを並び替えたもの
+
+	//文字列長が4以下の場合
+	/*
+		string = "ABCDE"
+		length = 5
+		index = [0,1,2,3,4]
+		rand_idx := rand.Perm(length - 2) = [0,1,2] → 1を足せば [1,2,3] が取れる
+	*/
 
 	if length >= 4 {
-		for i := range new_runes {
-			new_runes[i] = runes[rand_idx[i]]
+		new_runes := make([]rune, length)
+		rand_idx := rand.Perm(length - 2) //文字列のインデックスを並び替えたもの
+		//最初と最後は同じ
+		new_runes[0] = runes[0]
+		new_runes[length-1] = runes[length-1]
+		//
+		for i := range rand_idx {
+			new_runes[i+1] = runes[rand_idx[i]+1]
 		}
 		new_word = string(new_runes)
 	} else {
