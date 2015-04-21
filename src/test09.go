@@ -7,61 +7,56 @@
 を与え，その実行結果を確認せよ．
 */
 
+/*ref.
+https://groups.google.com/forum/#!topic/golang-nuts/JDVCR__dHbI
+http://golang.org/pkg/math/rand/
+*/
+
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"regexp"
+	"math/rand"
 	"strings"
 )
-
-/*
-func scan(sent string) string {
-	fmt.Printf("%v : ", sent)
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
-	return input
-}
-*/
 
 func WordsSplit(s string) []string {
 	words := strings.Split(s, " ") //[]に単語が格納
 	return words
 }
 
-func RamdomizeWord(word string) string{
+func RandomizeWord(word string) string {
 	var new_word string
 	runes := []rune(word)
 	length := len(runes)
+	new_runes := make([]rune, length)
+	rand_idx := rand.Perm(length) //文字列のインデックスを並び替えたもの
 
-	if length =< 4 {
-
-	}else{
-		new_word = runes
+	if length >= 4 {
+		for i := range new_runes {
+			new_runes[i] = runes[rand_idx[i]]
+		}
+		new_word = string(new_runes)
+	} else {
+		new_word = word
 	}
-	return 
+	return new_word
 }
 
-func RamdomizeSent(sent string) string{
+func RandomizeSent(sent string) string {
 	words := WordsSplit(sent)
 
-	for i := 0; i<len(words); i++{
-		words[i] = RamdomizeWord(words[i])
+	for i := 0; i < len(words); i++ {
+		words[i] = RandomizeWord(words[i])
 	}
-	return words 
+	return strings.Join(words, " ")
 }
-
 
 func main() {
 	//sent := strings.Trim(scan("input sentence"), "\n")
 	sent := "I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind ."
 
-	fmt.Printf("%v\n", s)
-
-	cipherSent := Cipher(sent)
-	fmt.Printf("cipherted sentence : %v\n", cipherSent)
-	decodeSent := Cipher(cipherSent)
-	fmt.Printf("decoded sentence : %v\n", decodeSent)
+	random_sent := RandomizeSent(sent)
+	fmt.Printf("src  sent : %v\n", sent)
+	fmt.Printf("rand sent : %v\n", random_sent)
 }
