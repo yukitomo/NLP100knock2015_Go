@@ -23,5 +23,4 @@ func main() {
 		count += 1
 	}
 	fmt.Println(count)
-
 }
