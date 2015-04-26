@@ -5,7 +5,14 @@
 確認にはcutコマンドを用いよ．
 */
 
+/*ref.
+https://gobyexample.com/writing-files
+https://github.com/astaxie/build-web-application-with-golang/blob/master/ja/07.5.md
+*/
+
 //実行 $ go run src/test12.go < data/hightemp.txt
+//確認 $ cut -f 1 data/hightemp.txt
+//      cut -f 2 data/hightemp.txt
 
 package main
 
