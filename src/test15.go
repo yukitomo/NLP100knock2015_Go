@@ -7,6 +7,9 @@
 http://matope.hatenablog.com/entry/2014/04/22/101127
 */
 
+//実行 % go run src/test15.go data/hightemp.txt [N]
+//確認 % tail -n [N] data/hightemp.txt
+
 package main
 
 import (

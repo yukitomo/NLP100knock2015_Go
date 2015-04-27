@@ -7,8 +7,8 @@
 http://matope.hatenablog.com/entry/2014/04/22/101127
 */
 
-//実行 % go run src/test14.go data/hightemp.txt 3
-//確認 % head -n 3 data/hightemp.txt
+//実行 % go run src/test14.go data/hightemp.txt [N]
+//確認 % head -n [N] data/hightemp.txt
 
 package main
 
