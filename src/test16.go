@@ -43,18 +43,29 @@ func split_Nfile(file *bufio.Reader, N int, output_dir string) {
 	}
 
 	sum_num := len(lines)
-	sub_num = len(lines) / N
+	sub_num := sum_num / N
+	rest_num := sum_num % N
+	set_nums := []int{}
 
-	fmt.Printf("sum_num : %d\n", sum_num)
-	fmt.Printf("sub_num : %d\n", sub_num)
+	for i := 0; i < N; i++ {
+		if rest_num > 0 {
+			set_nums = append(set_nums, sub_num+1)
+			rest_num -= 1
+		} else {
+			set_nums = append(set_nums, sub_num)
+		}
+	}
+
+	//fmt.Printf("sum_num : %d\n", sum_num)
+	//fmt.Printf("sub_num : %d\n", sub_num)
+	//fmt.Println(set_nums)
 
 	file_num := 0
-
-	for i := 0; i < sum_num; i += sub_num {
-		output_str := strings.Join(lines[i:i+sub_num], "")
-		//fmt.Printf(string(i))
-		//fmt.Printf(output_str)
-		//fmt.Printf(output_dir + string(file_num))
+	pre_i := 0
+	var nex_i int
+	for i := 0; i < N; i++ {
+		nex_i = pre_i + set_nums[i]
+		output_str := strings.Join(lines[pre_i:nex_i], "")
 
 		output_file, err := os.Create(output_dir + "/test16_" + strconv.Itoa(file_num) + ".txt")
 		check(err)
@@ -62,6 +73,7 @@ func split_Nfile(file *bufio.Reader, N int, output_dir string) {
 
 		output_file.WriteString(output_str)
 		file_num += 1
+		pre_i = nex_i
 	}
 }
 
