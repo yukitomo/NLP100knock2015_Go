@@ -4,6 +4,8 @@
 
 //ref. http://d.hatena.ne.jp/umisama/20100325/1269508269
 
+//% go run src/test07.go
+
 package main
 
 import (
@@ -21,9 +23,10 @@ func scan(sent string) string {
 }
 
 func main() {
-	//x := scan("x")
+	//各x,y,zをターミナルから入力
 	x := strings.Trim(scan("x"), "\n")
 	y := strings.Trim(scan("y"), "\n")
 	z := strings.Trim(scan("z"), "\n")
+
 	fmt.Printf("「%v時の%vは%v」\n", x, y, z)
 }

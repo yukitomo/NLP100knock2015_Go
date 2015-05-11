@@ -32,7 +32,7 @@ func check(e error) {
 func main() {
 	//loading input_file
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Split(bufio.ScanLines)
+	scanner.Split( .ScanLines)
 
 	//create output_file
 	f1, err1 := os.Create("data/col1.txt")

@@ -3,6 +3,7 @@
 同様の処理をsplitコマンドで実現せよ．*/
 
 //実行 % go run src/test16.go data/hightemp.txt [N] [output_dir]
+//確認 % bash knock016.sh ../Data/hightemp.txt [outdir] [n]
 
 package main
 
