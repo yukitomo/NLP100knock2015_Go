@@ -2,7 +2,7 @@
 1列目の文字列の種類（異なる文字列の集合）を求めよ．確認にはsort, uniqコマンドを用いよ．
 */
 
-//実行 $ go run src/test17.go data/hightemp.txt
+//実行 $ go run src/test17.go data/col1.txt
 //確認 $ sort data/col1.txt|uniq
 
 package main
