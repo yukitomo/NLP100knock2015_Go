@@ -3,7 +3,7 @@
 確認にはsortコマンドを用いよ（この問題はコマンドで実行した時の結果と合わなくてもよい）．*/
 
 //実行 $ go run src/test18.go data/hightemp.txt
-//確認 $ sort data/col1.txt|uniq
+//確認 $ sort -r -k 3 data/hightemp.txt
 
 /*ref
 http://qiita.com/takuan_osho/items/74ef2d970a4888175336 slice to string
@@ -76,7 +76,7 @@ func main() {
 		cols := strings.Split(str, "\t") //[]string 改行を消さないとfloat64にしても0になる
 		//fmt.Printf("%v\n", cols[2])
 
-		col013 := strings.Join(append(cols[:3], cols[3]), "\t")                  //カラム013を連結し一つの文字列
+		col013 := strings.Trim(str, "\n")                                        //カラム013を連結し一つの文字列
 		col2, _ = strconv.ParseFloat(strings.Replace(cols[2], "\t", "", -1), 64) //string to float64
 
 		//fmt.Printf("col2 : %v\n", col2)
@@ -90,8 +90,12 @@ func main() {
 
 	vs := NewValSorter(col013_col2)
 	//fmt.Println(col013_col2)
-	fmt.Printf("%v\n", *vs)
+	//fmt.Printf("%v\n", *vs)
 	vs.Sort()
-	fmt.Printf("%v\n", *vs)
+	//fmt.Printf("%v\n", *vs)
+
+	for i := range vs.Keys {
+		fmt.Printf("%v\n", vs.Keys[i])
+	}
 
 }
