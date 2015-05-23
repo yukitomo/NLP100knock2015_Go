@@ -1,3 +1,4 @@
 example/*
 data/*
 .DS_Store
+src_python/*
