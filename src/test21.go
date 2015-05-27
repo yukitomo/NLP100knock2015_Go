@@ -29,7 +29,6 @@ import (
 )
 
 func main() {
-	//re, _ := regexp.Compile("/[/[Category.*/]/]")
 
 	scanner := bufio.NewScanner(os.Stdin)
 	var text string
