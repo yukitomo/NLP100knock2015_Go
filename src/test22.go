@@ -29,7 +29,7 @@ func main() {
 			text = re1.ReplaceAllString(text, "")
 			text = re2.ReplaceAllString(text, "")
 
-			fmt.Println(text) // Println will add back the final '\n'
+			fmt.Println(text)
 		}
 
 	}
