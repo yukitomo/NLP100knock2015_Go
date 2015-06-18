@@ -23,7 +23,7 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	var text string
-	//var count int
+
 	for scanner.Scan() {
 		text = scanner.Text()
 
